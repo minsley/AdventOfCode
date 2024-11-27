@@ -99,49 +99,40 @@ int Trebuchet::solve2(const char *input) {
          continue;
       }
 
-      // parse digits (dumb and fast, since there are only 9 with no casing anyway)
+      // parse digits (dumb and fast-ish, since there are only 9 with no casing anyway)
       int val = 0;
-      bool parsed = false;
+      bool parseFailed = false; //
       if(c >= '0' && c <= '9') {
          val = c - '0';
-         parsed = true;
       } else if(input[i]=='o' && input[i+1]=='n' && input[i+2]=='e') {
          val = 1;
-         parsed = true;
       } else if(input[i]=='t' && input[i+1]=='w' && input[i+2]=='o') {
          val = 2;
-         parsed = true;
       } else if(input[i]=='t' && input[i+1]=='h' && input[i+2]=='r' && input[i+3]=='e' && input[i+4]=='e') {
          val = 3;
-         parsed = true;
       } else if(input[i]=='f' && input[i+1]=='o' && input[i+2]=='u' && input[i+3]=='r') {
          val = 4;
-         parsed = true;
       } else if(input[i]=='f' && input[i+1]=='i' && input[i+2]=='v' && input[i+3]=='e') {
          val = 5;
-         parsed = true;
       } else if(input[i]=='s' && input[i+1]=='i' && input[i+2]=='x') {
          val = 6;
-         parsed = true;
       } else if(input[i]=='s' && input[i+1]=='e' && input[i+2]=='v' && input[i+3]=='e' && input[i+4]=='n') {
          val = 7;
-         parsed = true;
       } else if(input[i]=='e' && input[i+1]=='i' && input[i+2]=='g' && input[i+3]=='h' && input[i+4]=='t') {
          val = 8;
-         parsed = true;
       } else if(input[i]=='n' && input[i+1]=='i' && input[i+2]=='n' && input[i+3]=='e') {
          val = 9;
-         parsed = true;
+      } else {
+         parseFailed = true;
       }
 
       // if we got a digit, track first and last
-      if(parsed) {
+      if(!parseFailed) {
          if(newline) {
-            first = last = val;
+            first = val;
             newline = false;
-         } else {
-            last = val;
          }
+         last = val;
       }
 
       i++;
