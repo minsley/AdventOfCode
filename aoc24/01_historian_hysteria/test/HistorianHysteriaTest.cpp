@@ -27,26 +27,26 @@ namespace HistorianHysteria {
     }
 }
 
-TEST_SUITE("01 HistorianHysteria") {
-    TEST_CASE("Example 1") {
+TEST_SUITE("01_HistorianHysteria") {
+    TEST_CASE("Example_1") {
         std::string filename = "HistorianHysteriaExample.txt";
         auto [list1, list2] = HistorianHysteria::parse(filename);
         CHECK(HistorianHysteria::solve1(list1, list2) == 11);
     }
 
-    TEST_CASE("Part 1") {
+    TEST_CASE("Part_1") {
         const std::string filename = "HistorianHysteriaInput.txt";
         auto [list1, list2] = HistorianHysteria::parse(filename);
         CHECK(HistorianHysteria::solve1(list1, list2) == 2344935);
     }
 
-    TEST_CASE("Example 2") {
+    TEST_CASE("Example_2") {
         std::string filename = "HistorianHysteriaExample.txt";
         auto [list1, list2] = HistorianHysteria::parse(filename);
         CHECK(HistorianHysteria::solve2(list1, list2) == 31);
     }
 
-    TEST_CASE("Part 2") {
+    TEST_CASE("Part_2") {
         std::string filename = "HistorianHysteriaInput.txt";
         auto [list1, list2] = HistorianHysteria::parse(filename);
         CHECK(HistorianHysteria::solve2(list1, list2) == 27647262);

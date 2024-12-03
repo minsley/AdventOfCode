@@ -6,12 +6,12 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(aoc24
         main.cpp
         lib/doctest.h
-        01-HistorianHysteria/HistorianHysteria.h
-        01-HistorianHysteria/HistorianHysteriaPart1.cpp
-        01-HistorianHysteria/HistorianHysteriaPart2.cpp
-        01-HistorianHysteria/Test/HistorianHysteriaTest.cpp
         util/TestHelper.cpp
-        util/TestHelper.h)
+        util/TestHelper.h
+        01_historian_hysteria/HistorianHysteria.h
+        01_historian_hysteria/HistorianHysteriaPart1.cpp
+        01_historian_hysteria/HistorianHysteriaPart2.cpp
+        01_historian_hysteria/Test/HistorianHysteriaTest.cpp
 
-file(GLOB INPUT_FILES ${CMAKE_CURRENT_SOURCE_DIR}/**/Input/*)
+file(GLOB INPUT_FILES ${CMAKE_CURRENT_SOURCE_DIR}/**/input/*)
 file(COPY ${INPUT_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
