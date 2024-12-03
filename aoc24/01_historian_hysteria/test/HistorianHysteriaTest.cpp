@@ -17,7 +17,7 @@ namespace HistorianHysteria {
         std::vector<int> list2;
 
         auto fileStr = TestHelper::readFileToString(filename);
-        for (auto line : TestHelper::tokenize(fileStr, "\r\n")) {
+        for (const auto &line : TestHelper::tokenize(fileStr, "\n")) {
             auto nums = TestHelper::tokenize(line, "   ");
             list1.push_back(std::stoi(nums.front()));
             list2.push_back(std::stoi(nums.back()));
@@ -35,9 +35,16 @@ TEST_SUITE("01_HistorianHysteria") {
     }
 
     TEST_CASE("Part_1") {
-        const std::string filename = "HistorianHysteriaInput.txt";
-        auto [list1, list2] = HistorianHysteria::parse(filename);
-        CHECK(HistorianHysteria::solve1(list1, list2) == 2344935);
+        SUBCASE("minsfb") {
+            const std::string filename = "HistorianHysteriaInput_minsfb.txt";
+            auto [list1, list2] = HistorianHysteria::parse(filename);
+            CHECK(HistorianHysteria::solve1(list1, list2) == 2344935);
+        }
+        SUBCASE("minsley") {
+            const std::string filename = "HistorianHysteriaInput_minsley.txt";
+            auto [list1, list2] = HistorianHysteria::parse(filename);
+            CHECK(HistorianHysteria::solve1(list1, list2) == 1579939);
+        }
     }
 
     TEST_CASE("Example_2") {
@@ -47,8 +54,15 @@ TEST_SUITE("01_HistorianHysteria") {
     }
 
     TEST_CASE("Part_2") {
-        std::string filename = "HistorianHysteriaInput.txt";
-        auto [list1, list2] = HistorianHysteria::parse(filename);
-        CHECK(HistorianHysteria::solve2(list1, list2) == 27647262);
+        SUBCASE("minsfb") {
+            std::string filename = "HistorianHysteriaInput_minsfb.txt";
+            auto [list1, list2] = HistorianHysteria::parse(filename);
+            CHECK(HistorianHysteria::solve2(list1, list2) == 27647262);
+        }
+        SUBCASE("minsley") {
+            std::string filename = "HistorianHysteriaInput_minsley.txt";
+            auto [list1, list2] = HistorianHysteria::parse(filename);
+            CHECK(HistorianHysteria::solve2(list1, list2) == 20351745);
+        }
     }
 }
