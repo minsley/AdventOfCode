@@ -2,10 +2,11 @@
 // Created by mins on 12/2/2024.
 //
 
+#include "HistorianHysteria.h"
+
 #include <algorithm>
 #include <vector>
 
-#include "HistorianHysteria.h"
 using namespace HistorianHysteria;
 
 /*

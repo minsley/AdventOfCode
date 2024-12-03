@@ -2,15 +2,15 @@
 // Created by mins on 12/2/2024.
 //
 
-#include <sstream>
-#include <string>
-#include <vector>
-
 #include "TestHelper.h"
 
 #include <fstream>
+#include <string>
+#include <vector>
 
-std::string TestHelper::ReadFileToString(const std::string &fileName)
+using namespace TestHelper;
+
+std::string TestHelper::readFileToString(const std::string &fileName)
 {
     std::ifstream ifs(fileName.c_str(), std::ios::in | std::ios::binary | std::ios::ate);
 

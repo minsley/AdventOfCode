@@ -5,8 +5,11 @@
 #ifndef TESTHELPER_H
 #define TESTHELPER_H
 
+#include <string>
+#include <vector>
+
 namespace TestHelper {
-    std::string ReadFileToString(const std::string &fileName);
+    std::string readFileToString(const std::string &fileName);
     std::vector<std::string> tokenize(const std::string& p_pcstStr, const std::string& delim);
 }
 
