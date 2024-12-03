@@ -132,7 +132,7 @@ TEST_SUITE("02_RedNosedReports") {
         SUBCASE("minsfb") {
             const std::string filename = "RedNosedReportsInput_minsfb.txt";
             auto reports = RedNosedReports::parse(filename);
-            CHECK(RedNosedReports::solve2(reports) == -1);
+            CHECK(RedNosedReports::solve2(reports) == 455);
         }
         SUBCASE("minsley") {
             const std::string filename = "RedNosedReportsInput_minsley.txt";
