@@ -77,13 +77,13 @@ TEST_SUITE("03_MullItOver") {
         SUBCASE("minsfb") {
             const std::string filename = "MullItOverInput_minsfb.txt";
             auto muls = MullItOver::parse2(filename);
-            CHECK(MullItOver::solve(muls) == 98632444);
+            CHECK(MullItOver::solve(muls) == 80747545);
             // x < 98632444
         }
         SUBCASE("minsley") {
             const std::string filename = "MullItOverInput_minsley.txt";
             auto muls = MullItOver::parse2(filename);
-            CHECK(MullItOver::solve(muls) == 118265503);
+            CHECK(MullItOver::solve(muls) == 88560720);
         }
     }
 }

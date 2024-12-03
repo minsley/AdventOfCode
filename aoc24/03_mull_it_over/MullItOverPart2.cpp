@@ -20,7 +20,7 @@ std::vector<std::tuple<int,int>> MullItOver::parse2(const std::string &filename)
     std::vector<std::tuple<int,int>> result;
 
     auto fileStr = TestHelper::readFileToString(filename);
-    const std::regex re(R"(don't\(\).*?do\(\)|mul\((\d+),(\d+)\))");
+    const std::regex re(R"(don't\(\)(?:.|\n)*?do\(\)|mul\((\d+),(\d+)\))");
     for(auto i = std::sregex_iterator(fileStr.begin(), fileStr.end(), re);
         i != std::sregex_iterator();
         *i++)
