@@ -11,7 +11,7 @@
 
 TEST_SUITE("03_MullItOver") {
     TEST_CASE("Example_1") {
-        std::string filename = "MullItOverExample.txt";
+        std::string filename = "MullItOverExample1.txt";
         auto program = MullItOver::parse1(filename);
         auto muls = program[0];
 
@@ -55,33 +55,23 @@ TEST_SUITE("03_MullItOver") {
     }
 
     TEST_CASE("Example_2") {
-        std::string filename = "MullItOverExample.txt";
+        std::string filename = "MullItOverExample2.txt";
         auto program = MullItOver::parse2(filename);
         auto muls = program[0];
 
         SUBCASE("mul(2,4) = 8") {
             auto [a, b] = muls[0];
-            CHECK(MullItOver::mul(a, b) == 1);
-        }
-
-        SUBCASE("mul(5,5) = 25") {
-            auto [a, b] = muls[1];
-            CHECK(MullItOver::mul(a, b) == -1);
-        }
-
-        SUBCASE("mul(11,8) = 88") {
-            auto [a, b] = muls[2];
-            CHECK(MullItOver::mul(a, b) == -1);
+            CHECK(MullItOver::mul(a, b) == 8);
         }
 
         SUBCASE("mul(8,5) = 40") {
-            auto [a, b] = muls[3];
-            CHECK(MullItOver::mul(a, b) == -1);
+            auto [a, b] = muls[1];
+            CHECK(MullItOver::mul(a, b) == 40);
         }
 
         SUBCASE("Recheck All") {
-            std::cout << "mul mul mul mul add" << std::endl;
-            CHECK(MullItOver::solve2(program) == -1);
+            std::cout << "mul (ignore) (ignore) mul add" << std::endl;
+            CHECK(MullItOver::solve2(program) == 48);
         }
     }
 
