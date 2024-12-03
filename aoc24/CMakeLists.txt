@@ -14,7 +14,8 @@ add_executable(aoc24
         01_historian_hysteria/Test/HistorianHysteriaTest.cpp
         02_red_nosed_reports/RedNosedReports.h
         02_red_nosed_reports/RedNosedReportsPart1.cpp
-        02_red_nosed_reports/test/RedNosedReportsTest.cpp)
+        02_red_nosed_reports/test/RedNosedReportsTest.cpp
+        02_red_nosed_reports/RedNosedReportsPart2.cpp)
 
 file(GLOB INPUT_FILES ${CMAKE_CURRENT_SOURCE_DIR}/**/input/*)
 file(COPY ${INPUT_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
