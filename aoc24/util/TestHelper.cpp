@@ -23,7 +23,7 @@ std::string TestHelper::readFileToString(const std::string &fileName)
     std::vector<char> bytes(fileSize);
     ifs.read(&bytes[0], fileSize);
 
-    return {&bytes[0], fileSize};
+    return {&bytes[0], static_cast<size_t>(fileSize)};
 }
 
 std::vector<std::string> TestHelper::tokenize( const std::string& str, const std::string&  delim )  {

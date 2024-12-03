@@ -18,7 +18,7 @@ namespace RedNosedReports {
 
         std::vector<std::vector<int>> result;
 
-        for (const auto line : TestHelper::tokenize(fileStr, "\r\n")) {
+        for (const auto line : TestHelper::tokenize(fileStr, "\n")) {
             std::vector<int> report;
             for(const auto entry : TestHelper::tokenize(line, " ")) {
                 report.push_back(std::stoi(entry));

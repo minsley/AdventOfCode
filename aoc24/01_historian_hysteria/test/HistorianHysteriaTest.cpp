@@ -17,7 +17,7 @@ namespace HistorianHysteria {
         std::vector<int> list2;
 
         auto fileStr = TestHelper::readFileToString(filename);
-        for (auto line : TestHelper::tokenize(fileStr, "\r\n")) {
+        for (const auto &line : TestHelper::tokenize(fileStr, "\n")) {
             auto nums = TestHelper::tokenize(line, "   ");
             list1.push_back(std::stoi(nums.front()));
             list2.push_back(std::stoi(nums.back()));
