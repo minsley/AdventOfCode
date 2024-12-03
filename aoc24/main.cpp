@@ -1,7 +1,3 @@
-#include <iostream>
-
-int main()
-{
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
+// provides main(); this line is required in only one .cpp file
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.h"
