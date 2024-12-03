@@ -17,35 +17,29 @@ int MullItOver::mul(int a, int b) {
     return a * b;
 }
 
-std::vector<std::vector<std::tuple<int,int>>> MullItOver::parse1(const std::string &filename) {
-    std::vector<std::vector<std::tuple<int,int>>> result;
+std::vector<std::tuple<int,int>> MullItOver::parse1(const std::string &filename) {
+    std::vector<std::tuple<int,int>> result;
 
     std::regex re(R"((mul\((\d+),(\d+)\)))");
 
     auto fileStr = TestHelper::readFileToString(filename);
-    for (auto line : TestHelper::tokenize(fileStr, "\n")) {
-        std::vector<std::tuple<int,int>> program;
-        std::regex_token_iterator<std::string::iterator> rend;
-        int submatches[] = { 2, 3 };
-        std::regex_token_iterator<std::string::iterator> rcur( line.begin(), line.end(), re, submatches );
-        while (rcur != rend) {
-            std::string aStr = *rcur++;
-            std::string bStr = *rcur++;
-            std::tuple<int,int> instruction(stoi(aStr), stoi(bStr));
-            program.push_back(instruction);
-        }
-        result.push_back(program);
+    std::regex_token_iterator<std::string::iterator> rend;
+    int submatches[] = { 2, 3 };
+    std::regex_token_iterator<std::string::iterator> rcur( fileStr.begin(), fileStr.end(), re, submatches );
+    while (rcur != rend) {
+        std::string aStr = *rcur++;
+        std::string bStr = *rcur++;
+        std::tuple<int,int> instruction(stoi(aStr), stoi(bStr));
+        result.push_back(instruction);
     }
 
     return result;
 }
 
-int MullItOver::solve(std::vector<std::vector<std::tuple<int,int>>> &program) {
+int MullItOver::solve(std::vector<std::tuple<int,int>> &program) {
     int sum = 0;
-    for(const auto &instructions : program){
-        for(const auto [a,b] : instructions) {
-            sum += MullItOver::mul(a,b);
-        }
+    for(const auto [a,b] : program) {
+        sum += MullItOver::mul(a,b);
     }
     return sum;
 }

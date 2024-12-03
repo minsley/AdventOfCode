@@ -13,25 +13,24 @@ TEST_SUITE("03_MullItOver") {
     TEST_CASE("Example_1") {
         std::string filename = "MullItOverExample1.txt";
         auto program = MullItOver::parse1(filename);
-        auto muls = program[0];
 
         SUBCASE("mul(2,4) = 8") {
-            auto [a, b] = muls[0];
+            auto [a, b] = program[0];
             CHECK(MullItOver::mul(a, b) == 8);
         }
 
         SUBCASE("mul(5,5) = 25") {
-            auto [a, b] = muls[1];
+            auto [a, b] = program[1];
             CHECK(MullItOver::mul(a, b) == 25);
         }
 
         SUBCASE("mul(11,8) = 88") {
-            auto [a, b] = muls[2];
+            auto [a, b] = program[2];
             CHECK(MullItOver::mul(a, b) == 88);
         }
 
         SUBCASE("mul(8,5) = 40") {
-            auto [a, b] = muls[3];
+            auto [a, b] = program[3];
             CHECK(MullItOver::mul(a, b) == 40);
         }
 
@@ -57,15 +56,14 @@ TEST_SUITE("03_MullItOver") {
     TEST_CASE("Example_2") {
         std::string filename = "MullItOverExample2.txt";
         auto program = MullItOver::parse2(filename);
-        auto muls = program[0];
 
         SUBCASE("mul(2,4) = 8") {
-            auto [a, b] = muls[0];
+            auto [a, b] = program[0];
             CHECK(MullItOver::mul(a, b) == 8);
         }
 
         SUBCASE("mul(8,5) = 40") {
-            auto [a, b] = muls[1];
+            auto [a, b] = program[1];
             CHECK(MullItOver::mul(a, b) == 40);
         }
 
