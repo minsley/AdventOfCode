@@ -19,9 +19,9 @@ int HistorianHysteria::solve1(std::vector<int> list1, std::vector<int> list2) {
    std::sort(list1.begin(), list1.end());
    std::sort(list2.begin(), list2.end());
 
-   for (int j=0; j<list1.size(); j++) {
-      const int n1 = list1[j];
-      const int n2 = list2[j];
+   for (int i=0; i<list1.size(); i++) {
+      const int n1 = list1[i];
+      const int n2 = list2[i];
       
       sum += (n1 > n2 ? n1-n2 : n2-n1);
    }
