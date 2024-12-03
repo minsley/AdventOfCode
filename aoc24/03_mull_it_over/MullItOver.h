@@ -12,8 +12,7 @@ namespace MullItOver {
     std::vector<std::vector<std::tuple<int,int>>> parse1(const std::string &filename);
     std::vector<std::vector<std::tuple<int,int>>> parse2(const std::string &filename);
     int mul(int a, int b);
-    int solve1(std::vector<std::vector<std::tuple<int,int>>> &program);
-    int solve2(std::vector<std::vector<std::tuple<int,int>>> &program);
+    int solve(std::vector<std::vector<std::tuple<int,int>>> &program);
 }
 
 #endif //MULLITOVER_H

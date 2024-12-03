@@ -37,7 +37,7 @@ TEST_SUITE("03_MullItOver") {
 
         SUBCASE("Recheck All") {
             std::cout << "mul mul mul mul add" << std::endl;
-            CHECK(MullItOver::solve1(program) == 161);
+            CHECK(MullItOver::solve(program) == 161);
         }
     }
 
@@ -45,12 +45,12 @@ TEST_SUITE("03_MullItOver") {
         SUBCASE("minsfb") {
             const std::string filename = "MullItOverInput_minsfb.txt";
             auto muls = MullItOver::parse1(filename);
-            CHECK(MullItOver::solve1(muls) == 182619815);
+            CHECK(MullItOver::solve(muls) == 182619815);
         }
         SUBCASE("minsley") {
             const std::string filename = "MullItOverInput_minsley.txt";
             auto muls = MullItOver::parse1(filename);
-            CHECK(MullItOver::solve1(muls) == 170068701);
+            CHECK(MullItOver::solve(muls) == 170068701);
         }
     }
 
@@ -71,7 +71,7 @@ TEST_SUITE("03_MullItOver") {
 
         SUBCASE("Recheck All") {
             std::cout << "mul (ignore) (ignore) mul add" << std::endl;
-            CHECK(MullItOver::solve2(program) == 48);
+            CHECK(MullItOver::solve(program) == 48);
         }
     }
 
@@ -79,12 +79,13 @@ TEST_SUITE("03_MullItOver") {
         SUBCASE("minsfb") {
             const std::string filename = "MullItOverInput_minsfb.txt";
             auto muls = MullItOver::parse2(filename);
-            CHECK(MullItOver::solve2(muls) == -1);
+            CHECK(MullItOver::solve(muls) == 98632444);
+            // x < 98632444
         }
         SUBCASE("minsley") {
             const std::string filename = "MullItOverInput_minsley.txt";
             auto muls = MullItOver::parse2(filename);
-            CHECK(MullItOver::solve2(muls) == -1);
+            CHECK(MullItOver::solve(muls) == 118265503);
         }
     }
 }

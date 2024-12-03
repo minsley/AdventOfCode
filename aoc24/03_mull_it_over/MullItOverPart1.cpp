@@ -40,7 +40,7 @@ std::vector<std::vector<std::tuple<int,int>>> MullItOver::parse1(const std::stri
     return result;
 }
 
-int MullItOver::solve1(std::vector<std::vector<std::tuple<int,int>>> &program) {
+int MullItOver::solve(std::vector<std::vector<std::tuple<int,int>>> &program) {
     int sum = 0;
     for(const auto &instructions : program){
         for(const auto [a,b] : instructions) {
