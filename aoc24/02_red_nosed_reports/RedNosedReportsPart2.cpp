@@ -46,46 +46,78 @@ If the flipped sign can be combined with a neighbor to result in a valid jump [-
 Additionally, either end may be discarded.
 */
 
-bool isValidDelta(int delta) {
-    int a = abs(delta);
-    return a >= 1 && a <= 3;
+bool RedNosedReports::isValidReport2(std::vector<int> &report) {
+    int reportSize = report.size();
+
+    // any set of 2 or fewer is valid
+    if(reportSize == 0 || reportSize == 1 || reportSize == 2) {
+        return true;
+    }
+
+    // any pair must be valid
+    if(reportSize == 3) {
+        return isValidDelta(report[1]-report[0]) || isValidDelta(report[2]-report[1]) || isValidDelta(report[2]-report[0]);
+    }
+
+    // generate deltas for this report
+    std::vector<int> deltas(reportSize - 1);
+    int pos = 0, neg = 0;
+    for(int i=0; i<report.size()-1; i++) {
+        int del = report[i+1] - report[i];
+        deltas.at(i) = del;
+        if(del > 0) pos++;
+        if(del < 0) neg++;
+    }
+
+    // identify overall incr/decr direction
+    bool increasing = pos > neg;
+
+    // if more than 1 bad delta, invalid
+    std::vector<int> badIds;
+    for(int i=0; i<deltas.size(); i++){
+        if(!isValidDelta(deltas[i], increasing)) {
+            badIds.push_back(i);
+        }
+    }
+
+    if(badIds.empty()) {
+        // no bad deltas, valid
+        return true;
+    } else  if(badIds.size() == 1) {
+        int badId = badIds[0];
+        // if we have 1 bad delta, and it's on either end, we're free to remove it: valid
+        if(badId == 0 || badId == deltas.size()-1) return true;
+
+        // if we can combine the bad delta with left neighbor to make a valid delta, we're good
+        int leftCombinedDelta = deltas[badId-1] + deltas[badId];
+        int leftValid = isValidDelta(leftCombinedDelta, increasing);
+        if(leftValid) return true;
+
+        // if we can combine the bad delta with right neighbor to make a valid delta, we're good
+        int rightCombinedDelta = deltas[badId] + deltas[badId+1];
+        int rightValid = isValidDelta(rightCombinedDelta, increasing);
+        if(rightValid) return true;
+
+        return false;
+    } else if (badIds.size() == 2){
+        // if we have 2 adjacent bad deltas that we can combine to make a valid delta, we're saved
+        bool adjacent = badIds[1] - badIds[0] == 1;
+        if(!adjacent) return false;
+
+        int combinedDelta = deltas[badIds[0]] + deltas[badIds[1]];
+        bool combinedValid = isValidDelta(combinedDelta, increasing);
+        return combinedValid;
+    } else {
+        // too many bad deltas to fix
+        return false;
+    }
 }
 
-bool isValidDelta(int delta, bool increasing) {
-    return ((increasing && delta > 0) || (!increasing && delta < 0)) && isValidDelta(delta);
-}
-
-int RedNosedReports::solve2(std::vector<std::vector<int> > reports) {
+int RedNosedReports::solve2(std::vector<std::vector<int>> &reports) {
     int safeCt = 0;
 
     for(auto report : reports) {
-        bool valid = true;
-
-        // assume any empty or single item report is valid?
-        if(report.size() >= 2) {
-
-            // generate deltas for this report
-            std::vector<int> deltas[report.size()-1];
-            for(int i=0; i<report.size()-1; i++) {
-                deltas->assign(i, report[i+1]-report[i]);
-            }
-
-            // if(report.size() == 3 && isValidDelta())
-
-            // first pair determines if rest must incr or decr
-            bool increasing = report[1] > report[0];
-
-            for(int i=1; i<report.size(); i++) {
-                int diff = report[i] - report[i-1];
-
-                // invalidate report if not all incr by +1 to +3, or decr by -1 to -3
-                valid = isValidDelta(diff, increasing);
-                if(!valid) {
-                    break;
-                }
-            }
-        }
-
+        bool valid = isValidReport2(report);
         if(valid) safeCt++;
     }
 
