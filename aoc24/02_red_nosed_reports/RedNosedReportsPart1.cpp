@@ -2,6 +2,7 @@
 // Created by mins on 12/2/2024.
 //
 
+#include <cmath>
 #include <vector>
 
 #include "RedNosedReports.h"

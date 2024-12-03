@@ -5,6 +5,7 @@
 #ifndef MULLITOVER_H
 #define MULLITOVER_H
 
+#include <string>
 #include <vector>
 
 namespace MullItOver {
