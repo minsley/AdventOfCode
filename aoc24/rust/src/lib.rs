@@ -1,6 +1,6 @@
-pub mod historian_hysteria;
-pub mod red_nosed_reports;
-pub mod ceres_search;
+pub mod day01_historian_hysteria;
+pub mod day02_red_nosed_reports;
+pub mod day04_ceres_search;
 
 pub mod utils {
     pub fn read_file(filename: &str) -> String {
