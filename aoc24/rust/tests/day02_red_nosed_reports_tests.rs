@@ -41,7 +41,7 @@ fn example_2() {
     let file = utils::read_file(path.as_str());
 
     let input = day02_red_nosed_reports::parse(&file);
-    let result = day02_red_nosed_reports::check_and_count(&input);
+    let result = day02_red_nosed_reports::fuzzy_check_and_count(&input, 1);
     assert_eq!(result, 4);
 }
 
@@ -51,7 +51,7 @@ fn part_2_minsley() {
     let file = utils::read_file(path.as_str());
 
     let input = day02_red_nosed_reports::parse(&file);
-    let result = day02_red_nosed_reports::check_and_count(&input);
+    let result = day02_red_nosed_reports::fuzzy_check_and_count(&input, 1);
     assert_eq!(result, 311);
 }
 
@@ -61,6 +61,6 @@ fn part_2_minsfb() {
     let file = utils::read_file(path.as_str());
 
     let input = day02_red_nosed_reports::parse(&file);
-    let result = day02_red_nosed_reports::check_and_count(&input);
+    let result = day02_red_nosed_reports::fuzzy_check_and_count(&input, 1);
     assert_eq!(result, 455);
 }
