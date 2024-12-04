@@ -21,5 +21,5 @@ add_executable(aoc24
         03_mull_it_over/MullItOverPart2.cpp
         03_mull_it_over/test/MullItOverTest.cpp)
 
-file(GLOB INPUT_FILES ${CMAKE_CURRENT_SOURCE_DIR}/**/input/*)
+file(GLOB INPUT_FILES ../info/**/input/*)
 file(COPY ${INPUT_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
