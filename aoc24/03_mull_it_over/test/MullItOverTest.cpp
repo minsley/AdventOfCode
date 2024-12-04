@@ -8,11 +8,14 @@
 #include "../../lib/doctest.h"
 
 #include "../MullItOver.h"
+#include "../../util/TestHelper.h"
 
-TEST_SUITE("03_MullItOver") {
+TEST_SUITE("03_MullItOver")
+{
     TEST_CASE("Example_1") {
-        std::string filename = "MullItOverExample1.txt";
-        auto program = MullItOver::parse1(filename);
+        const std::string filename = "MullItOverExample1.txt";
+        auto inputStr = TestHelper::readFileToString(filename);
+        auto program = MullItOver::parse1(inputStr);
 
         SUBCASE("mul(2,4) = 8") {
             auto [a, b] = program[0];
@@ -43,19 +46,22 @@ TEST_SUITE("03_MullItOver") {
     TEST_CASE("Part_1") {
         SUBCASE("minsfb") {
             const std::string filename = "MullItOverInput_minsfb.txt";
-            auto muls = MullItOver::parse1(filename);
-            CHECK(MullItOver::solve(muls) == 182619815);
+            auto inputStr = TestHelper::readFileToString(filename);
+            auto program = MullItOver::parse1(inputStr);
+            CHECK(MullItOver::solve(program) == 182619815);
         }
         SUBCASE("minsley") {
             const std::string filename = "MullItOverInput_minsley.txt";
-            auto muls = MullItOver::parse1(filename);
-            CHECK(MullItOver::solve(muls) == 170068701);
+            auto inputStr = TestHelper::readFileToString(filename);
+            auto program = MullItOver::parse1(inputStr);
+            CHECK(MullItOver::solve(program) == 170068701);
         }
     }
 
     TEST_CASE("Example_2") {
-        std::string filename = "MullItOverExample2.txt";
-        auto program = MullItOver::parse2(filename);
+        const std::string filename = "MullItOverExample2.txt";
+        auto inputStr = TestHelper::readFileToString(filename);
+        auto program = MullItOver::parse2(inputStr);
 
         SUBCASE("mul(2,4) = 8") {
             auto [a, b] = program[0];
@@ -73,17 +79,35 @@ TEST_SUITE("03_MullItOver") {
         }
     }
 
+    TEST_CASE("Extras_2")
+    {
+        SUBCASE("Newline madness")
+        {
+            const std::string input = "\nmul(2,4\n)\nmul(8,5)\n";
+            auto program = MullItOver::parse2(input);
+            CHECK(MullItOver::solve(program) == 40);
+        }
+        SUBCASE("Closed for good")
+        {
+            const std::string input = "mul(2,4)don't()mul(5,5)do()mul(11,8)don't()mul(8,5)";
+            auto program = MullItOver::parse2(input);
+            CHECK(MullItOver::solve(program) == 96);
+        }
+    }
+
     TEST_CASE("Part_2") {
         SUBCASE("minsfb") {
             const std::string filename = "MullItOverInput_minsfb.txt";
-            auto muls = MullItOver::parse2(filename);
-            CHECK(MullItOver::solve(muls) == 80747545);
+            auto inputStr = TestHelper::readFileToString(filename);
+            auto program = MullItOver::parse2(inputStr);
+            CHECK(MullItOver::solve(program) == 80747545);
             // x < 98632444
         }
         SUBCASE("minsley") {
             const std::string filename = "MullItOverInput_minsley.txt";
-            auto muls = MullItOver::parse2(filename);
-            CHECK(MullItOver::solve(muls) == 88560720);
+            auto inputStr = TestHelper::readFileToString(filename);
+            auto program = MullItOver::parse2(inputStr);
+            CHECK(MullItOver::solve(program) == 78683433);
         }
     }
 }

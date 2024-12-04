@@ -9,8 +9,8 @@
 #include <vector>
 
 namespace MullItOver {
-    std::vector<std::tuple<int,int>> parse1(const std::string &filename);
-    std::vector<std::tuple<int,int>> parse2(const std::string &filename);
+    std::vector<std::tuple<int,int>> parse1(const std::string &inputStr);
+    std::vector<std::tuple<int,int>> parse2(const std::string &inputStr);
     int mul(int a, int b);
     int solve(std::vector<std::tuple<int,int>> &program);
 }

@@ -8,29 +8,24 @@
 #include <regex>
 #include <vector>
 
-#include "../util/TestHelper.h"
-
-
 using namespace MullItOver;
 
 int MullItOver::mul(int a, int b) {
     return a * b;
 }
 
-std::vector<std::tuple<int,int>> MullItOver::parse1(const std::string &filename) {
+std::vector<std::tuple<int,int>> MullItOver::parse1(const std::string &inputStr) {
     std::vector<std::tuple<int,int>> result;
 
-    std::regex re(R"((mul\((\d+),(\d+)\)))");
+    const std::regex re(R"(mul\((\d{1,3}),(\d{1,3})\))");
+    for(auto i = std::sregex_iterator(inputStr.begin(), inputStr.end(), re);
+        i != std::sregex_iterator();
+        *i++)
+    {
+        const std::smatch &m = *i;
+        if(!m[1].matched || !m[2].matched) continue;
 
-    auto fileStr = TestHelper::readFileToString(filename);
-    std::regex_token_iterator<std::string::iterator> rend;
-    int submatches[] = { 2, 3 };
-    std::regex_token_iterator<std::string::iterator> rcur( fileStr.begin(), fileStr.end(), re, submatches );
-    while (rcur != rend) {
-        std::string aStr = *rcur++;
-        std::string bStr = *rcur++;
-        std::tuple<int,int> instruction(stoi(aStr), stoi(bStr));
-        result.push_back(instruction);
+        result.emplace_back(std::stoi(m[1]), std::stoi(m[2]));
     }
 
     return result;

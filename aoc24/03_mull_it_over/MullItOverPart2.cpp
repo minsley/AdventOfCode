@@ -8,20 +8,17 @@
 #include <regex>
 #include <vector>
 
-#include "../util/TestHelper.h"
-
 using namespace MullItOver;
 
 /*
 Match [don't()...do()] blocks and mul(num,num) blocks that are outside of them, capture the number pairs.
 */
 
-std::vector<std::tuple<int,int>> MullItOver::parse2(const std::string &filename) {
+std::vector<std::tuple<int,int>> MullItOver::parse2(const std::string &inputStr) {
     std::vector<std::tuple<int,int>> result;
 
-    auto fileStr = TestHelper::readFileToString(filename);
-    const std::regex re(R"(don't\(\)(?:.|\n)*?do\(\)|mul\((\d+),(\d+)\))");
-    for(auto i = std::sregex_iterator(fileStr.begin(), fileStr.end(), re);
+    const std::regex re(R"(mul\((\d+),(\d+)\)|don't\(\)(?:.|\n)*?(?:do\(\)|$))");
+    for(auto i = std::sregex_iterator(inputStr.begin(), inputStr.end(), re);
         i != std::sregex_iterator();
         *i++)
     {
