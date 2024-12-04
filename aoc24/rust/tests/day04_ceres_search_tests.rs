@@ -56,7 +56,7 @@ fn part1_minsfb() {
 
     let result = day04_ceres_search::xmas_count(file.as_str());
 
-    assert_eq!(result, -1);
+    assert_eq!(result, 2427);
 }
 
 #[test]
@@ -96,5 +96,5 @@ fn part2_minsfb() {
 
     let result = day04_ceres_search::x_mas_count(file.as_str());
 
-    assert_eq!(result, -1);
+    assert_eq!(result, 1900);
 }
