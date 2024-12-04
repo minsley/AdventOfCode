@@ -146,4 +146,66 @@ mod tests {
             assert_eq!(result, 455);
         }
     }
+
+    mod day4_ceres_search {
+        use aoc24::{utils, ceres_search};
+        use crate::tests::ROOT_DIR;
+
+        const DAY_DIR: &str = "04_ceres_search/input/";
+        const EXAMPLE_FILE_1: &str = "CeresSearchExample1.txt";
+        const EXAMPLE_FILE_2: &str = "CeresSearchExample2.txt";
+        const EXAMPLE_FILE_3: &str = "CeresSearchExample3.txt";
+        const INPUT_FILE_MINSLEY: &str = "CeresSearchInput_minsley.txt";
+        const INPUT_FILE_MINSFB: &str = "CeresSearchInput_minsfb.txt";
+
+        #[test]
+        fn example_1() {
+            let path = [ROOT_DIR, DAY_DIR, EXAMPLE_FILE_1].join("");
+            let file = utils::read_file(path.as_str());
+
+            let result = ceres_search::word_search(file.as_str());
+
+            assert_eq!(result, 4);
+        }
+
+        #[test]
+        fn example_2() {
+            let path = [ROOT_DIR, DAY_DIR, EXAMPLE_FILE_2].join("");
+            let file = utils::read_file(path.as_str());
+
+            let result = ceres_search::word_search(file.as_str());
+
+            assert_eq!(result, 18);
+        }
+
+        #[test]
+        fn example_3() {
+            let path = [ROOT_DIR, DAY_DIR, EXAMPLE_FILE_3].join("");
+            let file = utils::read_file(path.as_str());
+
+            let result = ceres_search::word_search(file.as_str());
+
+            assert_eq!(result, 2344);
+        }
+
+        #[test]
+        fn part1_minsley() {
+            let path = [ROOT_DIR, DAY_DIR, INPUT_FILE_MINSLEY].join("");
+            let file = utils::read_file(path.as_str());
+
+            let result = ceres_search::word_search(file.as_str());
+
+            assert_eq!(result, 18);
+        }
+
+        #[test]
+        fn part2_minsfb() {
+            let path = [ROOT_DIR, DAY_DIR, INPUT_FILE_MINSFB].join("");
+            let file = utils::read_file(path.as_str());
+
+            let result = ceres_search::word_search(file.as_str());
+
+            assert_eq!(result, 18);
+        }
+    }
 }
