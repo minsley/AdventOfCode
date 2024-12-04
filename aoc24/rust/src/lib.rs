@@ -1,4 +1,5 @@
 pub mod historian_hysteria;
+pub mod red_nosed_reports;
 
 pub mod utils {
     pub fn read_file(filename: &str) -> String {
