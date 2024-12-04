@@ -30,5 +30,3 @@
 | 23  |     |     |           |
 | 24  |     |     |           |
 | 25  |     |     |           |
-
-Mark the boxes as you complete each part and language implementation.
