@@ -46,6 +46,10 @@ fn example_2() {
 }
 
 #[test]
+fn extra_2() {
+}
+
+#[test]
 fn part_2_minsley() {
     let path = [DIR, INPUT_FILE_MINSLEY].join("");
     let file = utils::read_file(path.as_str());

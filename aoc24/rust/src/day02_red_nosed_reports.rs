@@ -1,3 +1,4 @@
+
 pub fn parse(input: &str) -> Vec<Vec<i16>> {
     let mut result: Vec<Vec<i16>> = Vec::new();
 
@@ -94,19 +95,17 @@ pub fn left_fixable(list: &Vec<i16>, index: usize, dir: Option<Direction>) -> bo
 }
 
 pub fn check_with_errors(list: &Vec<i16>, allowed_errors: usize) -> bool {
-    let len = list.len();
-    println!();
-    print!("{:?}", list);
-
     // cant have a bad sequence if there is no sequence, or every pair is allowed an error
-    if len < 2 || len - 1 < allowed_errors {
+    if list.len() < 2 || list.len() - 1 < allowed_errors {
         return true;
     }
 
     // check if we have a direction constraint
     // must check n_allowed_errors + 2 before a fixed direction emerges
-    let dir = find_direction(&list[0..allowed_errors+3]);
-    if len > allowed_errors+2 && dir == None {
+    let end = std::cmp::min(list.len(), allowed_errors+3);
+    let slice = &list[0..end];
+    let dir = find_direction(slice);
+    if list.len() > allowed_errors+2 && dir == None {
         // too many flip flops, impossible to satisfy consistent direction constraint
         return false;
     }
@@ -129,12 +128,25 @@ pub fn check_with_errors(list: &Vec<i16>, allowed_errors: usize) -> bool {
         }
         i += 1;
     }
-
-    print!(" pass");
     true
 }
 
+pub fn to_deltas(list: &Vec<i16>) -> Vec<i16> {
+    let mut dels: Vec<i16> = vec![];
+    for li in 0..list.len()-1 {
+        dels.push(list[li+1] - list[li]);
+    }
+    dels
+}
+
 pub fn check_with_errors_and_count(lists: Vec<Vec<i16>>, allowed_errors: usize) -> i64 {
-    println!("{:?}", lists);
-    lists.iter().fold(0, |acc, list| if check_with_errors(list, allowed_errors) { acc + 1 } else { acc })
+    lists.iter().fold(
+        0, 
+        |acc, list| {
+            print!("{:?}", list);
+            print!("    {:?}", to_deltas(list));
+            let valid = check_with_errors(list, allowed_errors);
+            if valid { println!("    PASS"); } else { println!(); }
+            if valid { acc + 1 } else { acc }
+        })
 }
