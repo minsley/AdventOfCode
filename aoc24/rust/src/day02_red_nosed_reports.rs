@@ -36,47 +36,105 @@ pub fn check_and_count(lists: &Vec<Vec<i16>>) -> i64 {
     lists.iter().fold(0, |acc, list| if check(&list) { acc + 1 } else { acc })
 }
 
-pub fn fuzzy_check_increasing(list: &[i16], fuzz: u8) -> bool {
-    if list.len() < 2 {
-        return true;
-    }
-    let del = list[1] - list[0];
-    del >=1 && del <=3 && check_increasing(&list[1..])
+#[derive(PartialEq, Eq, Copy, Clone)]
+pub enum Direction {
+    Increasing,
+    Decreasing,
 }
 
-pub fn fuzzy_check(list: &[i16], i: usize, j: usize, k: usize, fuzz: u8) -> bool {
-    if list.len() < 2 {
-        return true;
+pub fn find_direction(list: &[i16]) -> Option<Direction> {
+    let length = list.len();
+    if length < 2 {
+        None
     }
-    if k >= list.len() {
-        return false
-    }
-    if valid_sequence(list[i], list[j], list[k]) {
-        if k == list.len() - 1 {
-            return true;
-        } else {
-            return fuzzy_check(list, j, k, k + 1, fuzz);
+    else {
+        let mut sign_sum: i16 = 0;
+        for c in list.iter().collect::<Vec<_>>().chunks(2) {
+            sign_sum += (c[1] - c[0]).signum();
         }
-    } else if fuzz <= 0 {
-        return false;
-    } else if i == 0 || k == list.len()-1 {
-        return true;
-    } else {
-        return fuzzy_check(list, j, k, k+1, fuzz-1) // cut 1st
-        || fuzzy_check(list, i, k, k+1, fuzz-1); // cut 2nd
+
+        match Some(sign_sum) {
+            Some(x) if x < 0 => Some(Direction::Decreasing),
+            Some(x) if x > 0 => Some(Direction::Increasing),
+            _ => None
+        }
     }
 }
 
-pub fn valid_sequence(a: i16, b: i16, c: i16) -> bool{
-    let ab = b-a;
-    let ab_sig = ab.signum();
-    let ab_mag = ab.abs();
-    let bc = c-b;
-    let bc_sig = bc.signum();
-    let bc_mag = bc.abs();
-    ab_mag > 0 && ab_mag < 4 && bc_mag > 0 && bc_mag < 4 && ab_sig != 0 && ab_sig == bc_sig
+pub fn validate_pair(a: i16, b: i16, dir: Option<Direction>) -> bool {
+    let del = b-a;
+    let pass_direction = match dir {
+        Some(Direction::Increasing) => del.signum() > 0,
+        Some(Direction::Decreasing) => del.signum() < 0,
+        None => true
+    };
+    let pass_magnitude = del.abs() > 0 && del.abs() < 4;
+
+    pass_direction && pass_magnitude
 }
 
-pub fn fuzzy_check_and_count(lists: &Vec<Vec<i16>>, fuzz: u8) -> i64 {
-    lists.iter().fold(0, |acc, list| if fuzzy_check(list, 0, 1, 2, fuzz) { acc + 1 } else { acc })
+pub fn right_fixable(list: &Vec<i16>, index: usize, dir: Option<Direction>) -> bool {
+    if index == list.len()-2 {
+        // end cap can always be discarded
+        true
+    } else {
+        // try remove right
+        validate_pair(list[index], list[index+2], dir)
+    }
+}
+
+pub fn left_fixable(list: &Vec<i16>, index: usize, dir: Option<Direction>) -> bool {
+    if index == 0 {
+        // end cap can always be discarded
+        true
+    } else {
+        // try remove left (self)
+        validate_pair(list[index-1], list[index+1], dir)
+    }
+}
+
+pub fn check_with_errors(list: &Vec<i16>, allowed_errors: usize) -> bool {
+    let len = list.len();
+    println!();
+    print!("{:?}", list);
+
+    // cant have a bad sequence if there is no sequence, or every pair is allowed an error
+    if len < 2 || len - 1 < allowed_errors {
+        return true;
+    }
+
+    // check if we have a direction constraint
+    // must check n_allowed_errors + 2 before a fixed direction emerges
+    let dir = find_direction(&list[0..allowed_errors+3]);
+    if len > allowed_errors+2 && dir == None {
+        // too many flip flops, impossible to satisfy consistent direction constraint
+        return false;
+    }
+
+    let mut remaining_errors = allowed_errors;
+
+    let mut i = 0;
+    while i < list.len()-1 {
+        if !validate_pair(list[i], list[i+1], dir) {
+            if remaining_errors == 0 {
+                return false;
+            } else if right_fixable(list, i, dir) {
+                remaining_errors -= 1;
+                i += 1; // is there a better way to tell an iter to skip one in rust?
+            } else if left_fixable(list, i, dir) {
+                remaining_errors -= 1;
+            } else {
+                return false;
+            }
+        }
+        i += 1;
+    }
+
+    print!(" pass");
+    true
+}
+
+pub fn check_with_errors_and_count(lists: Vec<Vec<i16>>, allowed_errors: usize) -> i64 {
+    println!("{:?}", lists);
+    lists.iter().fold(0, |acc, list| if check_with_errors(list, allowed_errors) { acc + 1 } else { acc })
 }
