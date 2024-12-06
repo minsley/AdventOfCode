@@ -19,7 +19,13 @@ add_executable(aoc24
         03_mull_it_over/MullItOver.h
         03_mull_it_over/MullItOverPart1.cpp
         03_mull_it_over/MullItOverPart2.cpp
-        03_mull_it_over/test/MullItOverTest.cpp)
+        03_mull_it_over/test/MullItOverTest.cpp
+        05_print_queue/PrintQueue.h
+        05_print_queue/PrintQueue.cpp
+        05_print_queue/test/PrintQueueTest.cpp
+        06_guard_gallivant/GuardGallivant.h
+        06_guard_gallivant/GuardGallivant.cpp
+        06_guard_gallivant/test/GuardGallivantTest.cpp)
 
 file(GLOB INPUT_FILES ../info/**/input/*)
 file(COPY ${INPUT_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
