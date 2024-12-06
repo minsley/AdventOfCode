@@ -61,7 +61,7 @@ fn part_2_minsley() {
 
 #[test]
 fn part_2_minsfb() {
-    let path = [DIR, INPUT_FILE_MINSLEY].join("");
+    let path = [DIR, INPUT_FILE_MINSFB].join("");
     let file = utils::read_file(path.as_str());
 
     let input = day02_red_nosed_reports::parse(&file);

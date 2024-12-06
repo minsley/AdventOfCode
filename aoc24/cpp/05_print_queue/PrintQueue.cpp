@@ -4,6 +4,8 @@
 
 #include <sstream>
 #include "PrintQueue.h"
+
+#include <unordered_map>
 #include <unordered_set>
 
 using namespace print_queue;

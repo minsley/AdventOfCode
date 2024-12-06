@@ -5,8 +5,10 @@
 #ifndef CPP_PRINTQUEUE_H
 #define CPP_PRINTQUEUE_H
 
+#include <unordered_map>
 #include <vector>
 #include <unordered_set>
+#include <string>
 
 namespace print_queue {
     class Node {

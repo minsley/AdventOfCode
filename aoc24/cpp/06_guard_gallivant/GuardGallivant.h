@@ -6,6 +6,7 @@
 #define GUARDGALLIVANT_H
 
 #include <vector>
+#include <string>
 
 namespace guard_gallivant {
 
