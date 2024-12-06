@@ -20,7 +20,7 @@ TEST_SUITE("05_PrintQueue") {
             const std::string filename = "print_queue_input1_minsfb.txt";
             std::string inputStr = TestHelper::readFileToString(filename);
             auto printQueue = print_queue::parse(inputStr);
-            CHECK(print_queue::solve1(printQueue) == 143);
+            CHECK(print_queue::solve1(printQueue) == 4637);
         }
         SUBCASE("minsley") {
             const std::string filename = "print_queue_input1_minsley.txt";
@@ -42,7 +42,7 @@ TEST_SUITE("05_PrintQueue") {
             const std::string filename = "print_queue_input1_minsfb.txt";
             std::string inputStr = TestHelper::readFileToString(filename);
             auto printQueue = print_queue::parse(inputStr);
-            CHECK(print_queue::solve2(printQueue) == 143);
+            CHECK(print_queue::solve2(printQueue) == 6370);
         }
         SUBCASE("minsley") {
             const std::string filename = "print_queue_input1_minsley.txt";
