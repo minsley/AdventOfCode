@@ -28,7 +28,9 @@ namespace print_queue {
 
     PrintQueue parse(const std::string &inputStr);
     bool verify(const Update &update, const std::unordered_map<int, Node> &rules, int &middlePrinted);
-    int solve(PrintQueue &printQueue);
+    int solve1(PrintQueue &printQueue);
+    bool verifyFixable(const Update &update, const std::unordered_map<int, Node> &rules, int &middlePrinted);
+    int solve2(PrintQueue &printQueue);
 }
 
 

@@ -12,21 +12,43 @@ TEST_SUITE("05_PrintQueue") {
         std::string filename = "print_queue_example.txt";
         std::string inputStr = TestHelper::readFileToString(filename);
         auto printQueue = print_queue::parse(inputStr);
-        CHECK(print_queue::solve(printQueue) == 143);
+        CHECK(print_queue::solve1(printQueue) == 143);
     }
 
     TEST_CASE("Part_1") {
-//        SUBCASE("minsfb") {
-//            const std::string filename = "print_queue_input1_minsfb.txt";
-//            std::string inputStr = TestHelper::readFileToString(filename);
-//            auto printQueue = print_queue::parse(filename);
-//            CHECK(print_queue::solve(printQueue) == 143);
-//        }
+        SUBCASE("minsfb") {
+            const std::string filename = "print_queue_input1_minsfb.txt";
+            std::string inputStr = TestHelper::readFileToString(filename);
+            auto printQueue = print_queue::parse(inputStr);
+            CHECK(print_queue::solve1(printQueue) == 143);
+        }
         SUBCASE("minsley") {
             const std::string filename = "print_queue_input1_minsley.txt";
             std::string inputStr = TestHelper::readFileToString(filename);
             auto printQueue = print_queue::parse(inputStr);
-            CHECK(print_queue::solve(printQueue) == 4790);
+            CHECK(print_queue::solve1(printQueue) == 4790);
+        }
+    }
+
+    TEST_CASE("Example_2") {
+        std::string filename = "print_queue_example.txt";
+        std::string inputStr = TestHelper::readFileToString(filename);
+        auto printQueue = print_queue::parse(inputStr);
+        CHECK(print_queue::solve2(printQueue) == 123);
+    }
+
+    TEST_CASE("Part_2") {
+        SUBCASE("minsfb") {
+            const std::string filename = "print_queue_input1_minsfb.txt";
+            std::string inputStr = TestHelper::readFileToString(filename);
+            auto printQueue = print_queue::parse(inputStr);
+            CHECK(print_queue::solve2(printQueue) == 143);
+        }
+        SUBCASE("minsley") {
+            const std::string filename = "print_queue_input1_minsley.txt";
+            std::string inputStr = TestHelper::readFileToString(filename);
+            auto printQueue = print_queue::parse(inputStr);
+            CHECK(print_queue::solve2(printQueue) == 6319);
         }
     }
 }
