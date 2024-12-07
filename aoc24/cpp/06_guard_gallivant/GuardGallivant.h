@@ -10,7 +10,7 @@
 
 namespace guard_gallivant {
 
-    using Map = std::vector<std::vector<char>>;
+    using Map = std::vector<std::vector<std::pair<char, int>>>;
 
     enum Direction {
         UP,
@@ -33,8 +33,8 @@ namespace guard_gallivant {
     };
 
     Board parse(const std::string &inputStr);
-    int solve1(Board &board);
-    int solve2(Board &board);
+    int solve1(Board &board, bool debug = false);
+    int solve2(Board &board, bool debug = false);
 }
 
 
