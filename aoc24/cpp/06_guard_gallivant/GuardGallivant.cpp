@@ -87,16 +87,17 @@ void printDebug(const Map &map, const int posTally) {
     std::cout << "Unique Positions: " << posTally << std::endl;
 }
 
-int guard_gallivant::solve1(Board &board, const bool debug) {
+std::pair<int, int> processBoard(Board &board, bool debug = false) {
     Position pos = board.startPos;
     Direction dir = board.startDir;
     char carat = dirToCarat(dir);
     int uniquePos = 0;
+    int obstacles = 0;
 
     while (pos.y < board.map.size() && pos.y >= 0 && pos.x < board.map[pos.y].size() && pos.x >= 0) {
-        std::pair<char,int> &loc = board.map[pos.y][pos.x];
+        auto &[fst, snd] = board.map[pos.y][pos.x];
 
-        if(loc.first == '#') {
+        if(fst == '#') {
             // back up a step, turn 90deg clockwise, step
             move(pos, inverse(dir));
             dir = static_cast<Direction>((static_cast<int>(dir) + 1) % 4);
@@ -104,28 +105,32 @@ int guard_gallivant::solve1(Board &board, const bool debug) {
             move(pos, dir);
 
             if(debug) printDebug(board.map, uniquePos);
-        } else if (loc.first == carat) {
+        } else if (fst == carat) {
             // we're caught in a loop, worst guard duty gig ever
-            return uniquePos;
+            return {uniquePos, obstacles};
         } else {
             // track first time traversing
-            if(loc.second == 0) uniquePos++;
+            if(snd == 0) uniquePos++;
 
-            // if we ever do a crossover, spot is no longer unique
-            // if(loc.second == 1) uniquePos--;
+            // if we ever do a crossover, thats a spot where we could force a loop
+            if(snd == 1) obstacles++;
 
             // mark where we've been
-            loc.first = carat;
-            loc.second += 1;
+            fst = carat;
+            snd += 1;
 
             move(pos, dir);
         }
     }
 
     if(debug) printDebug(board.map, uniquePos);
-    return uniquePos;
+    return {uniquePos, obstacles};
+}
+
+int guard_gallivant::solve1(Board &board, const bool debug) {
+    return processBoard(board, debug).first;
 }
 
 int guard_gallivant::solve2(Board &board, const bool debug) {
-    return -1;
+    return processBoard(board, debug).second;
 }
