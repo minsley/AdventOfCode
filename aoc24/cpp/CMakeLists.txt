@@ -25,7 +25,10 @@ add_executable(aoc24
         05_print_queue/test/PrintQueueTest.cpp
         06_guard_gallivant/GuardGallivant.h
         06_guard_gallivant/GuardGallivant.cpp
-        06_guard_gallivant/test/GuardGallivantTest.cpp)
+        06_guard_gallivant/test/GuardGallivantTest.cpp
+        07_bridge_repair/BridgeRepair.h
+        07_bridge_repair/BridgeRepair.cpp
+        07_bridge_repair/test/BridgeRepairTest.cpp)
 
 file(GLOB INPUT_FILES ../info/**/input/*)
 file(COPY ${INPUT_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
