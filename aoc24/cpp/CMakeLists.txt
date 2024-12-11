@@ -37,7 +37,10 @@ add_executable(aoc24
         09_disk_fragmenter/test/DiskFragmenterTest.cpp
         10_hoof_it/HoofIt.h
         10_hoof_it/HoofIt.cpp
-        10_hoof_it/test/HoofItTest.cpp)
+        10_hoof_it/test/HoofItTest.cpp
+        11_plutonian_pebbles/PlutonianPebbles.h
+        11_plutonian_pebbles/PlutonianPebbles.cpp
+        11_plutonian_pebbles/test/PlutonianPebblesTest.cpp)
 
 file(GLOB INPUT_FILES ../info/**/input/*)
 file(COPY ${INPUT_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
