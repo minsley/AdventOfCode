@@ -60,6 +60,7 @@ size_t ResonantCollinearity::solve2(const Map &input) {
                 size_t dy = a1.y - a2.y;
 
                 // step both directions, adding as many nodes as will fit
+                // note: every antenna pair will also have overlapping antinodes now!
                 auto c1 = Coord(a1.x, a1.y);
                 while(c1.x >= 0 && c1.x < input.width && c1.y >= 0 && c1.y < input.height) {
                     uniqueLoc.insert(c1);
