@@ -6,16 +6,23 @@
 #define AOC24_BRIDGEREPAIR_H
 
 #include <vector>
+#include <span>
+#include <cmath>
 
 namespace BridgeRepair {
     struct Equation {
-        int left;
-        std::vector<int> right;
+        long left;
+        std::vector<long> right;
     };
 
     using InputSet = std::vector<Equation>;
 
-    bool solveEq(int left, const std::vector<int> &right);
-    int solve1(const InputSet &input);
+    bool evalEq1(long solution, long state, std::span<const long> args);
+    long solve1(InputSet &input);
+
+    long pow10(long num, long pow);
+    long concat(long a, long b);
+    bool evalEq2(long solution, long state, std::span<const long> args);
+    long solve2(InputSet &input);
 }
 #endif //AOC24_BRIDGEREPAIR_H
