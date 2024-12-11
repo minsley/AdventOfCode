@@ -16,19 +16,23 @@ namespace PlutonianPebbles::Test {
         return {};
     }
 
-    TEST_SUITE("10_HoofIt") {
+    TEST_SUITE("11_PlutonianPebbles") {
         TEST_CASE("Parsing") {
-            const std::string filename = "hoff_it_example.txt";
+            const std::string filename = "plutonian_pebbles_example1.txt";
             const std::string inputStr = TestHelper::readFileToString(filename);
             auto input = parse(inputStr);
         }
-        TEST_CASE("Part_1_Examples") {
-            SUBCASE("Example") {
-                const std::string filename = "hoff_it_example.txt";
-                const std::string inputStr = TestHelper::readFileToString(filename);
-                auto input = parse(inputStr);
-                CHECK(solve1(input) == 31);
-            }
+        TEST_CASE("Example_1") {
+            const std::string filename = "plutonian_pebbles_example1.txt";
+            const std::string inputStr = TestHelper::readFileToString(filename);
+            auto input = parse(inputStr);
+            CHECK(solve1(input) == 31);
+        }
+        TEST_CASE("Example_2") {
+            const std::string filename = "plutonian_pebbles_example2.txt";
+            const std::string inputStr = TestHelper::readFileToString(filename);
+            auto input = parse(inputStr);
+            CHECK(solve1(input) == 31);
         }
     }
 }
