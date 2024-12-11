@@ -19,17 +19,33 @@ namespace HoofIt::Test {
 
     TEST_SUITE("10_HoofIt") {
         TEST_CASE("Parsing") {
-            const std::string filename = "hoff_it_example.txt";
+            const std::string filename = "hoof_it_example1.txt";
             const std::string inputStr = TestHelper::readFileToString(filename);
             auto input = parse(inputStr);
         }
-        TEST_CASE("Part_1_Examples") {
-            SUBCASE("Example") {
-                const std::string filename = "hoff_it_example.txt";
-                const std::string inputStr = TestHelper::readFileToString(filename);
-                auto input = parse(inputStr);
-                CHECK(solve1(input) == 31);
-            }
+        TEST_CASE("Example_01") {
+            const std::string filename = "hoof_it_example1.txt";
+            const std::string inputStr = TestHelper::readFileToString(filename);
+            auto input = parse(inputStr);
+            CHECK(solve1(input) == 31);
+        }
+        TEST_CASE("Example_02") {
+            const std::string filename = "hoof_it_example2.txt";
+            const std::string inputStr = TestHelper::readFileToString(filename);
+            auto input = parse(inputStr);
+            CHECK(solve1(input) == 31);
+        }
+        TEST_CASE("Example_03") {
+            const std::string filename = "hoof_it_example3.txt";
+            const std::string inputStr = TestHelper::readFileToString(filename);
+            auto input = parse(inputStr);
+            CHECK(solve1(input) == 31);
+        }
+        TEST_CASE("Example_04") {
+            const std::string filename = "hoof_it_example4.txt";
+            const std::string inputStr = TestHelper::readFileToString(filename);
+            auto input = parse(inputStr);
+            CHECK(solve1(input) == 31);
         }
     }
 }
