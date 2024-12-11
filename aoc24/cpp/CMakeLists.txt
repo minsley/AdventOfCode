@@ -28,7 +28,16 @@ add_executable(aoc24
         06_guard_gallivant/test/GuardGallivantTest.cpp
         07_bridge_repair/BridgeRepair.h
         07_bridge_repair/BridgeRepair.cpp
-        07_bridge_repair/test/BridgeRepairTest.cpp)
+        07_bridge_repair/test/BridgeRepairTest.cpp
+        08_resonant_collinearity/ResonantCollinearity.h
+        08_resonant_collinearity/ResonantCollinearity.cpp
+        08_resonant_collinearity/test/ResonantCollinearityTest.cpp
+        09_disk_fragmenter/DiskFragmenter.h
+        09_disk_fragmenter/DiskFragmenter.cpp
+        09_disk_fragmenter/test/DiskFragmenterTest.cpp
+        10_hoof_it/HoofIt.h
+        10_hoof_it/HoofIt.cpp
+        10_hoof_it/test/HoofItTest.cpp)
 
 file(GLOB INPUT_FILES ../info/**/input/*)
 file(COPY ${INPUT_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
