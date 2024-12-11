@@ -12,7 +12,7 @@
 | 5   |  [⭐](aoc24/cpp/05_print_queue/PrintQueue.cpp#L51)[⭐](aoc24/cpp/05_print_queue/PrintQueue.cpp#L75)   |     |
 | 6   |  [⭐](aoc24/cpp/06_guard_gallivant/GuardGallivant.cpp#L130)   |     |
 | 7   |  [⭐](aoc24/cpp/07_bridge_repair/BridgeRepair.cpp#L7)[⭐](aoc24/cpp/07_bridge_repair/BridgeRepair.cpp#L45)   |     |
-| 8   |     |     |
+| 8   |  [⭐](aoc24/cpp/08_resonant_collinearity/ResonantCollinearity.cpp#L7)[⭐](aoc24/cpp/08_resonant_collinearity/ResonantCollinearity.cpp#L44)   |     |
 | 9   |     |     |
 | 10  |     |     |
 | 11  |     |     |
