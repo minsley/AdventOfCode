@@ -8,14 +8,6 @@
 #include <vector>
 
 namespace DiskFragmenter {
-    struct Equation {
-        int left;
-        std::vector<int> right;
-    };
-
-    using InputSet = std::vector<Equation>;
-
-    bool solveEq(int left, const std::vector<int> &right);
-    int solve1(const InputSet &input);
+    int solve1(const std::vector<int> &input);
 }
 #endif //AOC24_DISKFRAGMENTER_H
