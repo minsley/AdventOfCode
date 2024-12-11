@@ -16,7 +16,6 @@ namespace ResonantCollinearity {
     using InputSet = std::vector<Equation>;
 
     bool solveEq(int left, const std::vector<int> &right);
-
     int solve1(const InputSet &input);
 }
 #endif //AOC24_RESONANTCOLLINEARITY_H

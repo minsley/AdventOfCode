@@ -16,7 +16,6 @@ namespace DiskFragmenter {
     using InputSet = std::vector<Equation>;
 
     bool solveEq(int left, const std::vector<int> &right);
-
     int solve1(const InputSet &input);
 }
 #endif //AOC24_DISKFRAGMENTER_H
