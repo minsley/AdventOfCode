@@ -15,7 +15,7 @@
 | 8   |  [⭐](aoc24/cpp/08_resonant_collinearity/ResonantCollinearity.cpp#L7)[⭐](aoc24/cpp/08_resonant_collinearity/ResonantCollinearity.cpp#L44)   |     |
 | 9   |     |     |
 | 10  |     |     |
-| 11  |     |     |
+| 11  |   [⭐](aoc24/cpp/11_plutonian_pebbles/PlutonianPebbles.cpp#L27)  |     |
 | 12  |     |     |
 | 13  |     |     |
 | 14  |     |     |
