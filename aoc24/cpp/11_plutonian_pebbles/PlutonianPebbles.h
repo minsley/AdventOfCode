@@ -6,8 +6,10 @@
 #define AOC24_PLUTONIANPEBBLES_H
 
 #include <vector>
+#include <iostream>
 
 namespace PlutonianPebbles {
-  solve1(const std::vector<int> &input);
+  void blink(std::vector<long> &input);
+  size_t solve1(const std::vector<long> &input, size_t blinks);
 }
 #endif //AOC24_PLUTONIANPEBBLES_H

@@ -39,7 +39,7 @@ long BridgeRepair::concat(long a, long b) {
     auto shift = b == 0
          ? 1 // log10(0) is undefined, but it's ok, we just want to shift by the number of digits
          : (long)log10l((long double)b) + 1;
-    return BridgeRepair::pow10(a, shift) + b;
+    return pow10(a, shift) + b;
 }
 
 bool BridgeRepair::evalEq2(long solution, long state, const std::span<const long> args) {
