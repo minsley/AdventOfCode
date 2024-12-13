@@ -7,35 +7,34 @@
 int DiskFragmenter::solve1(const std::vector<int> &input) {
     int sum = 0;
 
-    size_t diskSize = input.size();
-    size_t i=0;
-    size_t j = diskSize % 2 == 0 ? diskSize-2 : diskSize-1; // start on the last file, skip trailing free space
-    size_t iBlocks=0;
-    size_t jj=0;
-    while(i < j){
+    int diskSize = static_cast<int>(input.size());
+    int i=0;
+    int j = diskSize % 2 == 0 ? diskSize-2 : diskSize-1; // start on the last file, skip trailing free space
+    int block=0;
+    int jj=0;
+    while(i <= j){
         if(i%2==0){
             // i is a file
             // multiply the file id (i) by indices range between blocks already passed (iBlocks) and the end of the file (iBlocks + input[i])
-            for(size_t ii = 0; ii < input[i]; ii++){
-                sum += i * (iBlocks + ii);
-                iBlocks++;
+            for(size_t ii = i==j?jj:0; ii < input[i]; ++ii){
+                sum += i / 2 * block++;
             }
-            i++;
+            ++i;
         } else {
             // i is free space
             // count in our j file until we run out of i free space
-            for(size_t ii=0; ii < input[i]; ii++){
-                // if we stll have i space left, move to next j file
+            for(size_t ii=0; ii < input[i]; ++ii){
+                // if we still have i space left, move to next j file
                 if(jj == input[j]){
                     jj=0;
                     j-=2;
+                    if(j<=i) continue;
                 }
                 // multiply the file id (j) by indices range between blocks already passed (iBlocks) and the end of the free space (iBlocks + input[i])
-                sum += j/2 * (iBlocks + ii);
-                iBlocks++;
-                jj++;
+                sum += j / 2 * block++;
+                ++jj;
             }
-            i++;
+            ++i;
         }
     }
 
