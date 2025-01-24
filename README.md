@@ -13,7 +13,7 @@
 | 6   |  [⭐](aoc24/cpp/06_guard_gallivant/GuardGallivant.cpp#L130)   |     |
 | 7   |  [⭐](aoc24/cpp/07_bridge_repair/BridgeRepair.cpp#L7)[⭐](aoc24/cpp/07_bridge_repair/BridgeRepair.cpp#L45)   |     |
 | 8   |  [⭐](aoc24/cpp/08_resonant_collinearity/ResonantCollinearity.cpp#L7)[⭐](aoc24/cpp/08_resonant_collinearity/ResonantCollinearity.cpp#L44)   |     |
-| 9   |     |     |
+| 9   |  [⭐](aoc24/cpp/09_disk_fragmenter/DiskFragmenter.cpp#L7)[⭐](aoc24/cpp/09_disk_fragmenter/DiskFragmenter.cpp#L46)   |     |
 | 10  |     |     |
 | 11  |   [⭐](aoc24/cpp/11_plutonian_pebbles/PlutonianPebbles.cpp#L27)  |     |
 | 12  |     |     |
