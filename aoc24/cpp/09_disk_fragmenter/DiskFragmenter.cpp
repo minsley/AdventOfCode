@@ -4,8 +4,8 @@
 
 #include "DiskFragmenter.h"
 
-int DiskFragmenter::solve1(const std::vector<int> &input) {
-    int sum = 0;
+long DiskFragmenter::solve1(const std::vector<int> &input) {
+    long sum = 0;
 
     int diskSize = static_cast<int>(input.size());
     int i=0;
@@ -28,7 +28,9 @@ int DiskFragmenter::solve1(const std::vector<int> &input) {
                 if(jj == input[j]){
                     jj=0;
                     j-=2;
-                    if(j<=i) continue;
+
+                    // if we've run out of files, return the sum
+                    if(j<=i) return sum;
                 }
                 // multiply the file id (j) by indices range between blocks already passed (iBlocks) and the end of the free space (iBlocks + input[i])
                 sum += j / 2 * block++;

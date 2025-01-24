@@ -81,8 +81,8 @@ namespace DiskFragmenter::Test {
             const std::string filename = "disk_fragmenter_part1_minsley.txt";
             const std::string inputStr = TestHelper::readFileToString(filename);
             auto input = parse(inputStr);
-            CHECK(solve1(input) > 200390238);
-            // 200390238 < answer
+            long soln = solve1(input);
+            CHECK(soln == 6519155389266);
         }
         TEST_CASE("Part1_minsfb") {
             const std::string filename = "disk_fragmenter_part1_minsfb.txt";

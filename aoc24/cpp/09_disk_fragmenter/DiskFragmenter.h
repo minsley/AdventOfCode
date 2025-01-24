@@ -8,6 +8,6 @@
 #include <vector>
 
 namespace DiskFragmenter {
-    int solve1(const std::vector<int> &input);
+    long solve1(const std::vector<int> &input);
 }
 #endif //AOC24_DISKFRAGMENTER_H
