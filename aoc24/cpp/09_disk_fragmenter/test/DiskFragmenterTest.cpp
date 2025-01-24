@@ -84,12 +84,32 @@ namespace DiskFragmenter::Test {
             long soln = solve1(input);
             CHECK(soln == 6519155389266);
         }
-        TEST_CASE("Part1_minsfb") {
-            const std::string filename = "disk_fragmenter_part1_minsfb.txt";
+//        TEST_CASE("Part1_minsfb") {
+//            const std::string filename = "disk_fragmenter_part1_minsfb.txt";
+//            const std::string inputStr = TestHelper::readFileToString(filename);
+//            auto input = parse(inputStr);
+//            CHECK(solve1(input) == 200390238);
+//        }
+        TEST_CASE("Example_4") {
+            const std::string filename = "disk_fragmenter_example.txt";
             const std::string inputStr = TestHelper::readFileToString(filename);
             auto input = parse(inputStr);
-            CHECK(solve1(input) == 200390238);
+            CHECK(solve2(input) == 2858);
         }
+        TEST_CASE("Part2_minsley") {
+            const std::string filename = "disk_fragmenter_part1_minsley.txt";
+            const std::string inputStr = TestHelper::readFileToString(filename);
+            auto input = parse(inputStr);
+            long soln = solve2(input);
+            CHECK(soln == 6547228115826);
+        }
+//        TEST_CASE("Part2_minsfb") {
+//            const std::string filename = "disk_fragmenter_part1_minsfb.txt";
+//            const std::string inputStr = TestHelper::readFileToString(filename);
+//            auto input = parse(inputStr);
+//            long soln = solve2(input);
+//            CHECK(soln == -1);
+//        }
     }
 }
 

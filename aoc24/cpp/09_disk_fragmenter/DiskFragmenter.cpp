@@ -42,3 +42,38 @@ long DiskFragmenter::solve1(const std::vector<int> &input) {
 
     return sum;
 }
+
+long DiskFragmenter::solve2(const std::vector<int> &input) {
+    // create a list of files and free spaces
+    int diskSize = static_cast<int>(input.size());
+    int head = 0;
+    std::vector<File> files;
+    for(int i=0; i<diskSize; ++i){
+        int id = i%2==0 ? i/2 : -1;
+        files.push_back({.id = id, .size = input[i], .head = head});
+        head += input[i];
+    }
+
+    // swap rear files into front free space
+    for (int i = files.size()-1; i>0; i-=2) {
+        if(files[i].id <= 0) continue;
+        for (int j=1; j<i; j+=2) {
+            if(files[j].size >= files[i].size){
+                files[i].head = files[j].head;
+                files[j].head += files[i].size;
+                files[j].size -= files[i].size;
+                break;
+            }
+        }
+    }
+
+    // calculate the checksum
+    long sum = 0;
+    for (int i=0; i<files.size(); i+=2){
+        for (int j=files[i].head; j<files[i].head+files[i].size; ++j){
+            sum += files[i].id * j;
+        }
+    }
+
+    return sum;
+}
